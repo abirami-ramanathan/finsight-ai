@@ -1,0 +1,168 @@
+# ==============================
+# Python / Virtual Environment
+# ==============================
+
+.venv/
+venv/
+env/
+ENV/
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ==============================
+# IDE / OS
+# ==============================
+
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ==============================
+# Environment / Secrets
+# ==============================
+
+.env
+.env.*
+!.env.example
+
+# ==============================
+# Raw / Processed Data
+# ==============================
+
+data/raw/*
+data/processed/*
+data/documents/*
+
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/documents/.gitkeep
+
+# ==============================
+# Trained Models
+# ==============================
+
+models/*
+!models/.gitkeep
+
+*.h5
+*.keras
+*.pt
+*.pth
+*.safetensors
+*.bin
+*.onnx
+*.faiss
+*.index
+
+*.pkl
+*.pickle
+*.joblib
+*.model
+*.weights
+*.ckpt
+*.tflite
+
+# ==============================
+# ML / Experiment Artifacts
+# ==============================
+
+checkpoints/
+runs/
+wandb/
+mlruns/
+
+# ==============================
+# Jupyter
+# ==============================
+
+.ipynb_checkpoints/
+
+# ==============================
+# Logs
+# ==============================
+
+*.log
+logs/
+
+# ==============================
+# Temporary Files
+# ==============================
+
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# ==============================
+# Build / Distribution
+# ==============================
+
+build/
+dist/
+*.egg-info/
+
+# ==============================
+# Output Files
+# ==============================
+# Keep CSV, images, JSON and documentation
+# while excluding any model artifacts that
+# may accidentally appear inside outputs.
+
+outputs/*
+!outputs/
+
+!outputs/**/*.csv
+!outputs/**/*.png
+!outputs/**/*.jpg
+!outputs/**/*.jpeg
+!outputs/**/*.gif
+!outputs/**/*.svg
+
+!outputs/**/*.json
+!outputs/**/*.txt
+!outputs/**/*.md
+!outputs/**/*.pdf
+!outputs/**/*.docx
+
+!outputs/**/.gitkeep
+
+# Explicitly exclude model files even if
+# they somehow appear inside outputs/
+
+outputs/**/*.h5
+outputs/**/*.keras
+outputs/**/*.pt
+outputs/**/*.pth
+outputs/**/*.safetensors
+outputs/**/*.bin
+outputs/**/*.onnx
+outputs/**/*.faiss
+outputs/**/*.index
+outputs/**/*.pkl
+outputs/**/*.pickle
+outputs/**/*.joblib
+outputs/**/*.model
+outputs/**/*.weights
+outputs/**/*.ckpt
+outputs/**/*.tflite
+
+# ==============================
+# Large Archives
+# ==============================
+
+*.zip
+*.7z
+*.rar
+*.tar
+*.gz

@@ -1,0 +1,73 @@
+import torch
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+
+
+class RAGGenerator:
+    def __init__(
+        self,
+        model_name="google/flan-t5-base"
+    ):
+        self.tokenizer = AutoTokenizer.from_pretrained(
+            model_name
+        )
+
+        self.model = AutoModelForSeq2SeqLM.from_pretrained(
+            model_name
+        )
+
+        self.device = (
+            "cuda"
+            if torch.cuda.is_available()
+            else "cpu"
+        )
+
+        self.model.to(self.device)
+
+    def generate(
+        self,
+        question,
+        contexts,
+        max_new_tokens=180
+    ):
+        context_text = "\n\n".join(
+            [
+                f"Source: {item['source']}\n"
+                f"{item['text']}"
+                for item in contexts
+            ]
+        )
+
+        prompt = f"""
+Answer the financial question using only the provided context.
+
+If the context does not contain enough information, say:
+"I don't have enough information in the provided sources."
+
+Question:
+{question}
+
+Context:
+{context_text}
+
+Answer:
+"""
+
+        inputs = self.tokenizer(
+            prompt,
+            return_tensors="pt",
+            truncation=True,
+            max_length=2048
+        ).to(self.device)
+
+        outputs = self.model.generate(
+            **inputs,
+            max_new_tokens=max_new_tokens,
+            do_sample=False
+        )
+
+        answer = self.tokenizer.decode(
+            outputs[0],
+            skip_special_tokens=True
+        )
+
+        return answer.strip()

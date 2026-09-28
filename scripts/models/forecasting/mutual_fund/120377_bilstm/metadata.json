@@ -1,0 +1,16 @@
+{
+  "kind": "bilstm",
+  "scheme_code": "120377",
+  "feature_columns": [
+    "nav",
+    "return_1d",
+    "ema_12",
+    "rsi_14",
+    "bb_high",
+    "bb_low",
+    "macd",
+    "macd_signal",
+    "volatility_20"
+  ],
+  "lookback": 30
+}
